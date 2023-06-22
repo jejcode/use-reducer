@@ -62,51 +62,7 @@ const reducer = (state, action) => {
     }
     return options[action.type]() || options.default()
 }
-const oldReducer = (state, action) => {
-    switch (action.type) {
-        case "SET_EMAIL_VALUE":
-            return {
-                ...state,
-                email: {
-                    // we have to add this or it would wipe out any existing value for state.email.error
-                    ...state.email,  
-                    value: action.payload
-                }
-            }
-        case "SET_EMAIL_ERROR":
-            return {
-                ...state,
-                email: {
-                    ...state.email,
-                    error: action.payload
-                }
-            }
-        case "SET_PASSWORD_VALUE":
-            return {
-                ...state,
-                password: {
-                    ...state.password,
-                    value: action.payload
-                }
-            }
-        case "SET_PASSWORD_ERROR":
-            return {
-                ...state,
-                password: {
-                    ...state.password,
-                    error: action.payload
-                }
-            }
-        case "SET_SUBMITTED_BOOLEAN":
-            return {
-                ...state,
-                hasBeenSubmitted: action.payload
-            }
-        default:
-            return state;
-    }
-}
- 
+
 export default () => {
     //  We call the useReducer function. and feed it the reducer function and initialState.
     //  This function will return an array with a state variable ("state") which will hold 
